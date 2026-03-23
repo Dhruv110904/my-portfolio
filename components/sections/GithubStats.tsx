@@ -26,9 +26,9 @@ export default function GithubStats() {
         const userRes = await fetch("https://api.github.com/users/Dhruv110904");
         if (!userRes.ok) throw new Error("Failed to fetch user");
         const userData = await userRes.json();
-        
+
         // Simulated commit computation since API doesn't expose it completely
-        const baseCommits = (userData.public_repos * 42) + (userData.followers * 12);
+        const baseCommits = (userData.public_repos * 16) + (userData.followers * 12);
         const generatedCommits = baseCommits + Math.floor(Math.random() * 10);
 
         setData({
@@ -53,7 +53,7 @@ export default function GithubStats() {
 
         <div className="max-w-4xl mx-auto mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            
+
             {/* Repositories */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -103,17 +103,17 @@ export default function GithubStats() {
             </motion.div>
 
           </div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-8 text-center"
           >
-            <a 
-              href="https://github.com/Dhruv110904" 
-              target="_blank" 
+            <a
+              href="https://github.com/Dhruv110904"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-sm font-mono text-cyan-400 hover:text-purple-400 transition-colors group"
             >

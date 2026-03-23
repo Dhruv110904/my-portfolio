@@ -292,12 +292,21 @@ export default function Projects() {
                 </div>
 
                 {/* Checksum Phase */}
-                <div className={`transition-all duration-300 ${buildPhase >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                  <div className="text-[10px] text-gray-500 mb-1">[ CHECKSUM & TRAILER ]</div>
-                  <div className="bg-[#050a0f] p-2 border left-2 border-yellow-500/50 text-yellow-500 font-bold truncate">
-                    0x{Array.from(activePacket.techStack.join("")).map(c => c.charCodeAt(0).toString(16)).join("").substring(0, 16).toUpperCase()}...
-                  </div>
-                </div>
+                 {(() => {
+                   const checksum = Array.from(activePacket.techStack.join(""))
+                     .map((c) => c.charCodeAt(0).toString(16))
+                     .join("")
+                     .substring(0, 16)
+                     .toUpperCase();
+                   return (
+                     <div className={`transition-all duration-300 ${buildPhase >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                       <div className="text-[10px] text-gray-500 mb-1">[ CHECKSUM &amp; TRAILER ]</div>
+                       <div className="bg-[#050a0f] p-2 border border-yellow-500/50 text-yellow-500 font-bold truncate">
+                         0x{checksum}...
+                       </div>
+                     </div>
+                   );
+                 })()}
               </div>
             </motion.div>
           </motion.div>

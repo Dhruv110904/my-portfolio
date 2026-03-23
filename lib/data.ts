@@ -50,7 +50,7 @@ export const projectsData = [
     description:
       "A centralized platform for university students to collaborate via study groups, resource sharing, and event coordination. Boosted student engagement by 35% and improved page load time by 50% through pagination and optimized queries.",
     techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/Dhruv110904/uniconnect",
     liveUrl: "",
   },
   {
@@ -58,7 +58,7 @@ export const projectsData = [
     description:
       "Intelligent file verification platform using hashing-based authenticity checks to detect tampered and duplicate files. Reduced comparison time by 55% with optimized memory usage.",
     techStack: ["React.js", "C++", "JavaScript", "MongoDB"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/Dhruv110904/FileTracer",
     liveUrl: "",
   },
   {
@@ -66,7 +66,15 @@ export const projectsData = [
     description:
       "Real-time one-to-one and group chat app with WebSocket-based instant messaging, JWT authentication, and protected routes. Built with Socket.io for bidirectional communication with minimal latency.",
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/Dhruv110904/Synaptik",
+    liveUrl: "https://synaptik-frontend.onrender.com/",
+  },
+  {
+    title: "TextUtils \u2014 Text Utility Application",
+    description:
+      "A real time text utility application with various text manipulation features like case conversion, text cleaning, and analysis with real-time preview and instant results.",
+    techStack: ["React.js", "Bootstrap"],
+    githubUrl: "https://github.com/Dhruv110904/TextUtils",
     liveUrl: "",
   },
 ];
@@ -95,6 +103,18 @@ export const certificationsData = [
     date: "May 2025",
     icon: Award,
   },
+  {
+    title: "The Bits and Bytes of Computer Networking",
+    issuer: "Coursera",
+    date: "Sep 2024",
+    icon: Award,
+  },
+  {
+    title: "Introduction to Hardware and Operating Systems",
+    issuer: "Coursera",
+    date: "Sep 2024",
+    icon: Award,
+  },
 ];
 
 export const achievementsData = [
@@ -105,9 +125,9 @@ export const achievementsData = [
     category: "Hackathon",
   },
   {
-    title: "Competitive Programming",
+    title: "DSA Programming",
     description: "Active contributor on coding platforms like Codeforces and LeetCode.",
-    link: "https://github.com/Dhruv110904",
+    link: "https://leetcode.com/u/dhruvjain_11/",
     icon: Terminal,
     category: "CP",
   },
