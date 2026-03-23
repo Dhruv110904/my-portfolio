@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep Navy/Black Theme */
+    --background: 210 50% 4%; /* #050a0f */
+    --foreground: 135 100% 50%; /* #00ff41 Matrix Green */
+    
+    /* Card base */
+    --card: 210 50% 5%; 
+    --card-foreground: 135 100% 50%;
+    --popover: 210 50% 5%;
+    --popover-foreground: 135 100% 50%;
+    
+    /* Primary (Matrix Green #00ff41) */
+    --primary: 135 100% 50%;
+    --primary-foreground: 210 50% 4%;
+    
+    /* Secondary (Cyan #00d4ff) */
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 210 50% 4%;
+    
+    /* Muted (Dark greenish tint) */
+    --muted: 135 50% 10%;
+    --muted-foreground: 135 40% 60%;
+    
+    /* Accent (Orange #ff6b35 for active packets) */
+    --accent: 16 100% 60%;
+    --accent-foreground: 210 50% 4%;
+    
+    --border: 135 50% 20%;
+    --input: 135 50% 20%;
+    --ring: 135 100% 50%;
+    --radius: 0rem; /* Hard edges for terminal feel */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans cursor-default;
+    background-color: #050a0f;
+    /* Subtle Data Grid / Circuit background */
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Matrix Selection */
+  ::selection {
+    background: #00ff41; 
+    color: #050a0f;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[#050a0f]/80 backdrop-blur-md border border-primary/30;
+  }
+  .glass-card {
+    @apply bg-[#050a0f]/60 backdrop-blur-xl border border-primary/20 shadow-[0_0_15px_rgba(0,255,65,0.05)];
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00ff41] to-[#00d4ff];
+  }
+  .terminal-text {
+    @apply font-mono text-[#00ff41] tracking-tight;
+  }
+}
+
+/* --- LIGHT MODE OSI THEME OVERRIDES --- */
+html.light body {
+  background-color: #f0f4f8 !important;
+  color: #020508 !important;
+  background-image: 
+    linear-gradient(rgba(0, 122, 31, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 122, 31, 0.05) 1px, transparent 1px) !important;
+}
+
+html.light ::selection {
+  background: #007a1f !important; 
+  color: #ffffff !important;
+}
+
+/* Base structural Backgrounds */
+html.light .bg-\[\#050a0f\] { background-color: #f0f4f8 !important; }
+html.light .bg-\[\#050a0f\]\/80 { background-color: rgba(240, 244, 248, 0.8) !important; }
+html.light .bg-\[\#050a0f\]\/90 { background-color: rgba(240, 244, 248, 0.9) !important; }
+html.light .bg-\[\#050a0f\]\/60 { background-color: rgba(240, 244, 248, 0.6) !important; }
+html.light .bg-\[\#020508\] { background-color: #e2e8f0 !important; }
+html.light .bg-\[\#020508\]\/80 { background-color: rgba(226, 232, 240, 0.8) !important; }
+html.light .bg-\[\#020508\]\/90 { background-color: rgba(226, 232, 240, 0.9) !important; }
+html.light .bg-\[\#111822\] { background-color: #cbd5e1 !important; }
+html.light .bg-\[\#081018\] { background-color: #e2e8f0 !important; }
+
+/* Matrix Green -> Dark Forest Green */
+html.light .text-\[\#00ff41\] { color: #007a1f !important; }
+html.light .text-\[\#00ff41\]\/40 { color: rgba(0, 122, 31, 0.4) !important; }
+html.light .text-\[\#00ff41\]\/50 { color: rgba(0, 122, 31, 0.5) !important; }
+html.light .border-\[\#00ff41\] { border-color: #007a1f !important; }
+html.light .border-\[\#00ff41\]\/20 { border-color: rgba(0, 122, 31, 0.2) !important; }
+html.light .border-\[\#00ff41\]\/30 { border-color: rgba(0, 122, 31, 0.3) !important; }
+html.light .border-\[\#00ff41\]\/40 { border-color: rgba(0, 122, 31, 0.4) !important; }
+html.light .border-\[\#00ff41\]\/50 { border-color: rgba(0, 122, 31, 0.5) !important; }
+html.light .border-\[\#00ff41\]\/80 { border-color: rgba(0, 122, 31, 0.8) !important; }
+html.light .bg-\[\#00ff41\] { background-color: #007a1f !important; }
+html.light .bg-\[\#00ff41\]\/20 { background-color: rgba(0, 122, 31, 0.2) !important; }
+html.light .bg-\[\#00ff41\]\/30 { background-color: rgba(0, 122, 31, 0.3) !important; }
+
+/* Cyan -> Sapphire Dark Cyan */
+html.light .text-\[\#00d4ff\] { color: #006b8f !important; }
+html.light .text-\[\#00d4ff\]\/70 { color: rgba(0, 107, 143, 0.7) !important; }
+html.light .border-\[\#00d4ff\] { border-color: #006b8f !important; }
+html.light .border-\[\#00d4ff\]\/10 { border-color: rgba(0, 107, 143, 0.1) !important; }
+html.light .border-\[\#00d4ff\]\/20 { border-color: rgba(0, 107, 143, 0.2) !important; }
+html.light .border-\[\#00d4ff\]\/30 { border-color: rgba(0, 107, 143, 0.3) !important; }
+html.light .bg-\[\#00d4ff\] { background-color: #006b8f !important; }
+html.light .bg-\[\#00d4ff\]\/10 { background-color: rgba(0, 107, 143, 0.1) !important; }
+html.light .bg-\[\#00d4ff\]\/20 { background-color: rgba(0, 107, 143, 0.2) !important; }
+
+/* Orange Payload -> Deep Rust Orange */
+html.light .text-\[\#ff6b35\] { color: #cc4400 !important; }
+html.light .border-\[\#ff6b35\] { border-color: #cc4400 !important; }
+html.light .border-\[\#ff6b35\]\/30 { border-color: rgba(204, 68, 0, 0.3) !important; }
+html.light .border-\[\#ff6b35\]\/50 { border-color: rgba(204, 68, 0, 0.5) !important; }
+html.light .bg-\[\#ff6b35\] { background-color: #cc4400 !important; }
+
+/* Whites/Grays inversion */
+html.light .text-white { color: #020508 !important; }
+html.light .text-gray-300 { color: #475569 !important; }
+html.light .text-gray-400 { color: #64748b !important; }
+html.light .text-gray-500 { color: #94a3b8 !important; }
+
+/* Invert Lottie Players tracking */
+html.light .glass { background-color: rgba(240, 244, 248, 0.8) !important; border-color: rgba(0, 122, 31, 0.3) !important; }
+html.light .glass-card { background-color: rgba(240, 244, 248, 0.6) !important; border-color: rgba(0, 122, 31, 0.2) !important; }
+html.light .text-gradient { background-image: linear-gradient(to right, #007a1f, #006b8f) !important; }
+html.light .terminal-text { color: #007a1f !important; }
