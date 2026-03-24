@@ -15,23 +15,14 @@ import NetworkTopology from "@/components/NetworkTopology";
 import AnimatedLaptop from "@/components/AnimatedLaptop";
 
 export default function Hero() {
-  const handleDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Generate Ripple Effect natively
-    const button = e.currentTarget;
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${e.clientY - button.offsetTop - radius}px`;
-    circle.classList.add("ripple");
-    
-    // Remove old ripples if they exist
-    const ripple = button.getElementsByClassName("ripple")[0];
-    if (ripple) {
-      ripple.remove();
-    }
-    button.appendChild(circle);
+  const handleDownload = () => {
+    // Force file download using anchor trick
+    const link = document.createElement("a");
+    link.href = "/dj.pdf";
+    link.download = "Dhruv_Jain_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
     confetti({
       particleCount: 150,
@@ -39,7 +30,6 @@ export default function Hero() {
       origin: { y: 0.6 },
       colors: ['#7c3aed', '#06b6d4', '#ffffff']
     });
-    window.open("/dj.pdf", "_blank");
   };
 
   return (
@@ -60,7 +50,7 @@ export default function Hero() {
       <PacketLossLine />
 
       <div className="container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-between z-10 relative pointer-events-none mt-8 gap-12 lg:gap-24 max-w-[90rem]">
-        
+
         {/* Left Column: Text Content & Buttons */}
         <div className="w-full lg:w-3/5 xl:w-[65%] flex flex-col items-center md:items-start text-left order-2 md:order-1 mx-auto md:mx-0">
           <Parallax speed={-5}>
@@ -74,7 +64,7 @@ export default function Hero() {
             <div className="w-full h-[400px] md:h-[420px] lg:h-[450px] mb-10 bg-[#050a0f]/80 border border-[#00ff41]/30 p-6 md:p-8 lg:p-10 font-mono text-base md:text-lg lg:text-xl text-[#00ff41] shadow-[0_0_20px_rgba(0,255,65,0.05)] flex flex-col justify-start items-start pointer-events-auto relative overflow-hidden">
               {/* Scanline overlay for raw terminal feel */}
               <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] pointer-events-none z-10"></div>
-              
+
               <Typewriter
                 options={{
                   delay: 40,
@@ -127,17 +117,16 @@ export default function Hero() {
               </ScrollLink>
             </Magnetic>
 
-            <Magnetic>
-              <button
-                onClick={handleDownload}
-                className="group relative cursor-pointer flex items-center justify-center px-6 py-3 bg-[#050a0f] border border-[#00d4ff]/50 font-mono font-bold overflow-hidden transition-all hover:scale-105 shadow-[0_0_15px_rgba(0,212,255,0.2)] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)] w-full sm:w-auto uppercase text-xs tracking-widest text-[#00d4ff]"
-              >
-                <span className="relative z-10 flex items-center pointer-events-none">
-                  [ DUMP_RESUME ]
-                  <Download className="ml-2 w-4 h-4 group-hover:-translate-y-1 transition-transform" />
-                </span>
-              </button>
-            </Magnetic>
+            <button
+              onClick={handleDownload}
+              className="group relative cursor-pointer flex items-center justify-center px-6 py-3 bg-[#050a0f] border border-[#00d4ff]/50 font-mono font-bold overflow-hidden transition-all shadow-[0_0_15px_rgba(0,212,255,0.2)] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)] w-full sm:w-auto uppercase text-xs tracking-widest text-[#00d4ff] hover:border-[#00d4ff] active:scale-95"
+            >
+              <div className="absolute inset-0 bg-[#00d4ff]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10 flex items-center pointer-events-none">
+                [ DUMP_RESUME ]
+                <Download className="ml-2 w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+              </span>
+            </button>
           </motion.div>
         </div>
 
@@ -145,7 +134,7 @@ export default function Hero() {
         <div className="w-full lg:w-2/5 xl:w-[35%] flex justify-center items-center order-1 md:order-2 relative">
           <Parallax speed={-10}>
             <div className="relative pointer-events-auto">
-               <AnimatedLaptop />
+              <AnimatedLaptop />
             </div>
           </Parallax>
         </div>
